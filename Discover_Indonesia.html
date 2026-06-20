@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discover Indonesia 🇮🇩</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth;}
+:root{
+  --red:#CE1126;--red2:#E8304A;--red-light:#FFF0F2;
+  --green:#1B7F2E;--green2:#27AE60;--green-light:#EAF7EE;
+  --yellow:#F5C518;--yellow-light:#FFFBEA;
+  --white:#FFFFFF;--bg:#F9F5F0;--card:#FFFFFF;
+  --text:#1A1A2E;--muted:#6B7280;--border:#E5E7EB;
+  --shadow:0 4px 24px rgba(0,0,0,0.08);
+  --radius:16px;--radius-sm:10px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* ===== NAVBAR ===== */
+nav{
+  position:sticky;top:0;z-index:999;
+  background:rgba(206,17,38,0.97);
+  backdrop-filter:blur(12px);
+  box-shadow:0 2px 20px rgba(206,17,38,0.3);
+}
+.nav-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 0;text-decoration:none;
+}
+.flag-mini{display:flex;flex-direction:column;width:32px;height:22px;border-radius:4px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.3);}
+.flag-top{
+    flex:1;
+    background:#CE1126;
+}
+
+.flag-bot{
+    flex:1;
+    background:#FFFFFF;
+}
+.logo-txt{font-family:'Baloo 2',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:0.5px;}
+.nav-links{display:flex;gap:2px;}
+.nav-a{
+  color:rgba(255,255,255,0.85);font-size:13px;font-weight:700;
+  padding:10px 14px;border-radius:8px;text-decoration:none;
+  border-bottom:3px solid transparent;
+  transition:all 0.2s;letter-spacing:0.3px;
+}
+.nav-a:hover,.nav-a.active{color:#fff;background:rgba(255,255,255,0.15);border-bottom-color:#F5C518;}
+
+/* ===== SECTIONS ===== */
+section{min-height:100vh;padding:0;}
+.section-inner{max-width:1100px;margin:0 auto;padding:60px 24px;}
+.section-header{text-align:center;margin-bottom:48px;}
+.section-header h2{font-family:'Baloo 2',sans-serif;font-size:36px;font-weight:900;color:var(--red);margin-bottom:8px;}
+.section-header p{font-size:16px;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.6;}
+.divider{width:60px;height:4px;background:linear-gradient(90deg,var(--red),var(--yellow));border-radius:4px;margin:12px auto 0;}
+
+/* ===== HOME ===== */
+#home{background:#fff;padding:0;}
+.hero{
+  min-height:100vh;
+  background:linear-gradient(160deg,#1B1B2E 0%,#16213E 40%,#0F3460 70%,#1B7F2E 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px 24px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-flag{display:flex;flex-direction:column;width:80px;height:54px;border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.4);margin:0 auto 28px;}
+.hero-flag-top{
+    flex:1;
+    background:#CE1126;
+}
+
+.hero-flag-bot{
+    flex:1;
+    background:#FFFFFF;
+}
+.hero h1{font-family:'Baloo 2',sans-serif;font-size:clamp(32px,6vw,64px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px;text-shadow:0 4px 16px rgba(0,0,0,0.4);}
+.hero h1 span{color:#F5C518;}
+.hero-sub{font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,0.8);max-width:520px;margin:0 auto 32px;line-height:1.7;font-weight:600;}
+.hero-stats{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:40px;}
+.stat-pill{background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.25);color:#fff;padding:10px 20px;border-radius:30px;font-size:14px;font-weight:700;backdrop-filter:blur(8px);}
+.stat-pill span{color:#F5C518;font-size:18px;font-weight:900;margin-right:4px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn-hero{padding:14px 28px;border-radius:30px;font-size:15px;font-weight:800;cursor:pointer;border:none;font-family:'Nunito',sans-serif;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;}
+.btn-hero:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.btn-primary{background:#F5C518;color:#1A1A2E;}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.5);}
+
+/* Home cards bawah hero */
+.home-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:48px 24px;max-width:1100px;margin:0 auto;}
+.home-card{background:var(--card);border-radius:var(--radius);padding:28px 20px;text-align:center;box-shadow:var(--shadow);border-top:4px solid;cursor:pointer;transition:transform 0.2s;}
+.home-card:hover{transform:translateY(-6px);}
+.home-card .icon{font-size:44px;margin-bottom:12px;}
+.home-card h3{font-size:16px;font-weight:800;margin-bottom:6px;}
+.home-card p{font-size:13px;color:var(--muted);line-height:1.5;}
+.home-about{background:var(--card);border-radius:var(--radius);padding:40px;box-shadow:var(--shadow);margin:0 24px 48px;max-width:1052px;margin-left:auto;margin-right:auto;}
+.home-about h3{font-family:'Baloo 2',sans-serif;font-size:24px;font-weight:800;color:var(--red);margin-bottom:16px;}
+.home-about p{font-size:15px;line-height:1.8;color:#333;margin-bottom:12px;}
+.about-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:24px;}
+.about-fact{background:var(--bg);border-radius:var(--radius-sm);padding:16px;text-align:center;border:2px solid var(--border);}
+.about-fact .num{font-size:24px;font-weight:900;color:var(--red);}
+.about-fact .lbl{font-size:12px;color:var(--muted);font-weight:700;margin-top:2px;}
+
+/* ===== GEOGRAPHY ===== */
+#geography{background:linear-gradient(180deg,#EAF7EE 0%,#F9F5F0 100%);}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:40px;}
+@media(max-width:700px){.geo-grid{grid-template-columns:1fr;}}
+.geo-card{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
+.geo-card h3{font-family:'Baloo 2',sans-serif;font-size:20px;font-weight:800;color:var(--green);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.geo-card p{font-size:14px;line-height:1.8;color:#333;}
+.geo-card ul{list-style:none;margin-top:10px;}
+.geo-card ul li{font-size:14px;padding:6px 0;border-bottom:1px solid var(--border);color:#333;display:flex;align-items:flex-start;gap:8px;}
+.geo-card ul li::before{content:'✦';color:var(--green);font-size:12px;margin-top:3px;flex-shrink:0;}
+.pancasila-list{list-style:none;margin-top:10px;}
+.pancasila-list li{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+.pancasila-list li .num{width:36px;height:36px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;}
+.pancasila-list li .txt{font-size:14px;color:#333;line-height:1.6;}
+.pancasila-list li .txt strong{display:block;font-size:15px;color:var(--text);margin-bottom:2px;}
+.tokoh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:8px;}
+.tokoh-card{background:var(--bg);border-radius:var(--radius-sm);padding:16px;text-align:center;border:2px solid var(--border);}
+.tokoh-card .ava{font-size:40px;width:64px;height:64px;background:linear-gradient(135deg,var(--red),var(--red2));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+.tokoh-card h4{font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px;}
+.tokoh-card p{font-size:12px;color:var(--muted);line-height:1.4;}
+.bhinneka-box{background:linear-gradient(135deg,var(--red),#E8304A);border-radius:var(--radius);padding:32px;text-align:center;color:#fff;margin-bottom:32px;}
+.bhinneka-box h3{font-family:'Baloo 2',sans-serif;font-size:28px;font-weight:900;margin-bottom:8px;}
+.bhinneka-box p{font-size:15px;opacity:0.9;line-height:1.7;}
+.bhinneka-box .meaning{font-size:20px;font-weight:800;color:#F5C518;margin:12px 0;}
+
+/* ===== CULTURE ===== */
+#culture{background:#fff;}
+.culture-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:32px;}
+.ctab{padding:10px 22px;border-radius:30px;font-size:14px;font-weight:700;cursor:pointer;border:2px solid var(--border);background:var(--bg);color:var(--muted);transition:all 0.2s;font-family:'Nunito',sans-serif;}
+.ctab:hover{border-color:var(--red);color:var(--red);}
+.ctab.active{background:var(--red);color:#fff;border-color:var(--red);}
+.cult-section{display:none;}
+.cult-section.active{display:block;}
+.culture-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.culture-item{background:var(--bg);border-radius:var(--radius);padding:24px;text-align:center;border:2px solid var(--border);transition:all 0.2s;}
+.culture-item:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:var(--shadow);}
+.culture-item .ci-icon{font-size:52px;margin-bottom:12px;}
+.culture-item h4{font-size:15px;font-weight:800;margin-bottom:6px;color:var(--text);}
+.culture-item .origin{font-size:12px;color:var(--red);font-weight:700;margin-bottom:6px;}
+.culture-item p{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* ===== FOOD ===== */
+#food{background:linear-gradient(180deg,#FFF9F0 0%,#F9F5F0 100%);}
+.food-filter{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:32px;}
+.ffbtn{padding:8px 18px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;border:2px solid var(--border);background:var(--bg);color:var(--muted);transition:all 0.2s;font-family:'Nunito',sans-serif;}
+.ffbtn.active,.ffbtn:hover{background:var(--yellow);border-color:var(--yellow);color:#1A1A2E;}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
+.food-card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.2s;}
+.food-card:hover{transform:translateY(-6px);}
+.food-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;}
+.food-body{padding:16px;}
+.food-body h4{font-size:15px;font-weight:800;margin-bottom:4px;}
+.food-origin{display:inline-block;background:var(--yellow-light);color:#8B6914;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+.food-body p{font-size:13px;color:var(--muted);line-height:1.5;}
+.food-hidden{display:none;}
+
+/* ===== ANIMALS ===== */
+#animals{background:linear-gradient(180deg,#EAF7EE 0%,#F9F5F0 100%);}
+.animals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+.animal-card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.2s;}
+.animal-card:hover{transform:translateY(-4px);}
+.animal-img-wrap{height:180px;display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden;}
+.animal-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.animal-img-wrap .emoji-ph{position:absolute;font-size:80px;}
+.animal-status{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:#fff;}
+.status-kritis{background:#C0392B;}
+.status-rentan{background:#E67E22;}
+.status-aman{background:#27AE60;}
+.animal-body{padding:18px;}
+.animal-body h4{font-size:16px;font-weight:800;margin-bottom:4px;}
+.animal-latin{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:6px;}
+.animal-origin{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;}
+.animal-body p{font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;}
+.sound-btn{display:flex;align-items:center;gap:8px;background:var(--green-light);border:2px solid var(--green);color:var(--green);padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;}
+.sound-btn:hover{background:var(--green);color:#fff;}
+.sound-btn.playing{background:var(--green);color:#fff;animation:pulse-border 1s infinite;}
+@keyframes pulse-border{0%,100%{box-shadow:0 0 0 0 rgba(27,127,46,0.4);}50%{box-shadow:0 0 0 6px rgba(27,127,46,0);}}
+
+/* ===== GAME ===== */
+#game{background:#fff;}
+.game-container{max-width:680px;margin:0 auto;}
+.game-start{text-align:center;padding:40px 20px;}
+.game-start .big-emoji{font-size:80px;margin-bottom:20px;}
+.game-start h3{font-family:'Baloo 2',sans-serif;font-size:28px;font-weight:800;color:var(--red);margin-bottom:10px;}
+.game-start p{font-size:15px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+.btn-start-game{background:var(--red);color:#fff;border:none;padding:16px 40px;border-radius:30px;font-size:17px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:transform 0.15s,box-shadow 0.15s;}
+.btn-start-game:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(206,17,38,0.4);}
+.game-play{display:none;}
+.game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
+.game-info{display:flex;gap:20px;}
+.game-stat{text-align:center;}
+.game-stat .gs-lbl{font-size:11px;color:var(--muted);font-weight:700;}
+.game-stat .gs-val{font-size:24px;font-weight:900;color:var(--red);}
+.progress-wrap{margin-bottom:24px;}
+.progress-track{height:8px;background:#E5E7EB;border-radius:8px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--yellow));border-radius:8px;transition:width 0.5s;}
+.progress-lbl{font-size:12px;color:var(--muted);font-weight:700;margin-top:6px;text-align:right;}
+.q-card{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
+.q-num{font-size:12px;color:var(--red);font-weight:800;letter-spacing:1px;margin-bottom:8px;}
+.q-text{font-size:17px;font-weight:800;color:var(--text);line-height:1.5;margin-bottom:24px;}
+.q-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+@media(max-width:500px){.q-options{grid-template-columns:1fr;}}
+.q-opt{padding:14px 16px;background:var(--bg);border:2px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-weight:700;cursor:pointer;transition:all 0.15s;color:var(--text);font-family:'Nunito',sans-serif;text-align:left;}
+.q-opt:hover:not(.disabled){border-color:var(--red);background:var(--red-light);}
+.q-opt.correct{background:#E8F8EE;border-color:var(--green);color:var(--green);}
+.q-opt.wrong{background:#FFEBEB;border-color:var(--red);color:var(--red);}
+.q-opt.disabled{cursor:not-allowed;}
+.q-feedback{padding:14px 18px;border-radius:var(--radius-sm);font-size:14px;font-weight:700;margin-bottom:16px;display:none;line-height:1.5;}
+.q-feedback.show{display:block;}
+.q-feedback.correct{background:#E8F8EE;color:var(--green);}
+.q-feedback.wrong{background:#FFEBEB;color:var(--red);}
+.btn-next{background:var(--red);color:#fff;border:none;padding:12px 28px;border-radius:25px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;display:none;}
+.btn-next.show{display:inline-block;}
+.game-result{display:none;text-align:center;padding:40px 20px;}
+.game-result.show{display:block;}
+.result-trophy{font-size:80px;margin-bottom:16px;}
+.result-title{font-family:'Baloo 2',sans-serif;font-size:30px;font-weight:900;color:var(--red);margin-bottom:8px;}
+.result-score{font-size:48px;font-weight:900;color:var(--green);margin:12px 0;}
+.result-msg{font-size:15px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+.result-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-retry{background:var(--red);color:#fff;border:none;padding:14px 28px;border-radius:25px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;}
+.answer-summary{background:var(--bg);border-radius:var(--radius);padding:20px;margin-bottom:24px;text-align:left;max-height:240px;overflow-y:auto;}
+.answer-summary h4{font-size:14px;font-weight:800;margin-bottom:12px;color:var(--text);}
+.ans-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.ans-icon{flex-shrink:0;font-size:16px;}
+.ans-q{color:var(--text);font-weight:600;}
+.ans-a{color:var(--muted);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .nav-links{gap:0;}
+  .nav-a{font-size:12px;padding:10px 10px;}
+  .logo-txt{font-size:15px;}
+  .section-inner{padding:40px 16px;}
+}
+@media(max-width:500px){
+  .nav-a{font-size:11px;padding:10px 8px;}
+  .hero h1{font-size:28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#home">
+      <div class="flag-mini"><div class="flag-top"></div><div class="flag-bot"></div></div>
+      <span class="logo-txt">BY ALFIYAH NURUL HIDAYATI</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-a active" href="#home" onclick="setActive(this)">🏠 Home</a>
+      <a class="nav-a" href="#geography" onclick="setActive(this)">🗺️ Geography</a>
+      <a class="nav-a" href="#culture" onclick="setActive(this)">🎭 Culture</a>
+      <a class="nav-a" href="#food" onclick="setActive(this)">🍜 Food</a>
+      <a class="nav-a" href="#animals" onclick="setActive(this)">🦅 Animals</a>
+      <a class="nav-a" href="#game" onclick="setActive(this)">🎮 Game</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HOME ===== -->
+<section id="home">
+  <div class="hero">
+    <div class="hero-flag"><div class="hero-flag-top"></div><div class="hero-flag-bot"></div></div>
+    <h1>Selamat Datang di<br><span>Indonesia!</span></h1>
+    <p class="hero-sub">Negara kepulauan terbesar di dunia dengan kekayaan budaya, alam, dan kuliner yang luar biasa. Mari kita kenali bersama!</p>
+    <div class="hero-stats">
+      <div class="stat-pill"><span>17.508</span> Pulau</div>
+      <div class="stat-pill"><span>270 Jt</span> Penduduk</div>
+      <div class="stat-pill"><span>700+</span> Bahasa</div>
+      <div class="stat-pill"><span>34</span> Provinsi</div>
+      <div class="stat-pill"><span>300+</span> Suku Bangsa</div>
+    </div>
+    <div class="hero-btns">
+      <a class="btn-hero btn-primary" href="#geography">Mulai Eksplorasi →</a>
+      <a class="btn-hero btn-ghost" href="#game">Mainkan Kuis 🎮</a>
+    </div>
+  </div>
+
+  <div class="home-cards">
+    <div class="home-card" style="border-top-color:#CE1126;" onclick="location.href='#geography'">
+      <div class="icon">🗺️</div>
+      <h3>Geografi</h3>
+      <p>Pelajari Pancasila, UUD 1945, Bhinneka Tunggal Ika, dan tokoh-tokoh pahlawan Indonesia</p>
+    </div>
+    <div class="home-card" style="border-top-color:#8E44AD;" onclick="location.href='#culture'">
+      <div class="icon">🎭</div>
+      <h3>Budaya</h3>
+      <p>Temukan tari tradisional, alat musik, rumah adat, dan pakaian dari seluruh Nusantara</p>
+    </div>
+    <div class="home-card" style="border-top-color:#F39C12;" onclick="location.href='#food'">
+      <div class="icon">🍜</div>
+      <h3>Kuliner</h3>
+      <p>Jelajahi cita rasa makanan khas dari Sabang sampai Merauke yang menggugah selera</p>
+    </div>
+    <div class="home-card" style="border-top-color:#1B7F2E;" onclick="location.href='#animals'">
+      <div class="icon">🦅</div>
+      <h3>Fauna</h3>
+      <p>Kenali hewan-hewan endemik Indonesia yang langka dan dengarkan suaranya!</p>
+    </div>
+    <div class="home-card" style="border-top-color:#2980B9;" onclick="location.href='#game'">
+      <div class="icon">🎮</div>
+      <h3>Kuis Seru</h3>
+      <p>Uji pengetahuan kamu tentang Indonesia dengan 10 pertanyaan menarik!</p>
+    </div>
+  </div>
+
+  <div class="home-about">
+    <h3>🌏 Tentang Indonesia</h3>
+    <p>Indonesia adalah negara kepulauan terbesar di dunia yang terletak di Asia Tenggara dan Oseania. Dengan lebih dari 17.500 pulau yang terbentang dari Sabang di ujung barat hingga Merauke di ujung timur, Indonesia memiliki keberagaman yang luar biasa dalam hal budaya, bahasa, suku bangsa, dan kekayaan alam.</p>
+    <p>Indonesia merdeka pada tanggal 17 Agustus 1945, diproklamasikan oleh Ir. Soekarno dan Drs. Mohammad Hatta. Ibu kota negara Indonesia adalah Jakarta, yang terletak di Pulau Jawa. Indonesia adalah negara dengan penduduk terbanyak keempat di dunia, dengan lebih dari 270 juta jiwa.</p>
+    <p>Dengan semboyan <strong>"Bhinneka Tunggal Ika"</strong> yang berarti <em>"Berbeda-beda tetapi tetap satu"</em>, Indonesia menjunjung tinggi persatuan di tengah keberagaman yang ada.</p>
+    <div class="about-facts">
+      <div class="about-fact"><div class="num">17 Agt</div><div class="lbl">Hari Kemerdekaan</div></div>
+      <div class="about-fact"><div class="num">1945</div><div class="lbl">Tahun Merdeka</div></div>
+      <div class="about-fact"><div class="num">Jakarta</div><div class="lbl">Ibu Kota</div></div>
+      <div class="about-fact"><div class="num">Rupiah</div><div class="lbl">Mata Uang</div></div>
+      <div class="about-fact"><div class="num">Garuda</div><div class="lbl">Lambang Negara</div></div>
+      <div class="about-fact"><div class="num">Merah Putih</div><div class="lbl">Bendera Negara</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GEOGRAPHY ===== -->
+<section id="geography">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>🗺️ Geografi & Identitas Bangsa</h2>
+      <p>Mengenal dasar-dasar negara, semboyan, dan tokoh-tokoh penting Indonesia</p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Tentang Indonesia -->
+    <div class="geo-grid" style="margin-bottom:32px;">
+      <div class="geo-card">
+        <h3>🌏 Apa Itu Indonesia?</h3>
+        <p>Indonesia adalah negara republik yang terletak di antara Benua Asia dan Australia, serta antara Samudra Hindia dan Samudra Pasifik. Indonesia adalah negara kepulauan terbesar di dunia.</p>
+        <ul style="margin-top:14px;">
+          <li>Luas daratan: <strong>1.904.569 km²</strong></li>
+          <li>Luas lautan: <strong>5.193.250 km²</strong></li>
+          <li>Jumlah pulau: <strong>lebih dari 17.508 pulau</strong></li>
+          <li>Pulau terbesar: Kalimantan, Sumatra, Papua, Sulawesi, Jawa</li>
+          <li>Letak astronomis: 6°LU – 11°LS & 95°BT – 141°BT</li>
+          <li>Berbatasan dengan Malaysia, PNG, Timor Leste, Australia</li>
+        </ul>
+      </div>
+      <div class="geo-card">
+        <h3>📜 UUD 1945</h3>
+        <p>Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 adalah konstitusi dan sumber hukum tertinggi yang berlaku di Indonesia.</p>
+        <ul style="margin-top:14px;">
+          <li>Disahkan: <strong>18 Agustus 1945</strong> oleh PPKI</li>
+          <li>Terdiri dari: <strong>Pembukaan (Preambule)</strong> dan <strong>Batang Tubuh</strong></li>
+          <li>Pembukaan memuat 4 alinea berisi tujuan negara</li>
+          <li>Tujuan negara: melindungi segenap bangsa, memajukan kesejahteraan umum, mencerdaskan kehidupan bangsa, ikut melaksanakan ketertiban dunia</li>
+          <li>Telah diamandemen sebanyak <strong>4 kali</strong> (1999–2002)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bhinneka Tunggal Ika -->
+    <div class="bhinneka-box">
+      <h3>"Bhinneka Tunggal Ika"</h3>
+      <div class="meaning">Berbeda-beda Tetapi Tetap Satu Jua</div>
+      <p>Semboyan negara Indonesia yang tertulis pada pita yang dicengkeram oleh Garuda Pancasila. Diambil dari Kakawin Sutasoma karangan Mpu Tantular pada abad ke-14, semboyan ini menjadi pengingat bahwa meski Indonesia terdiri dari ratusan suku, bahasa, dan budaya yang berbeda — semua bersatu sebagai satu bangsa Indonesia.</p>
+    </div>
+
+    <!-- Pancasila -->
+    <div class="geo-card" style="margin-bottom:32px;">
+      <h3>🦅 Pancasila — Dasar Negara Indonesia</h3>
+      <p style="margin-bottom:14px;">Pancasila adalah dasar dan ideologi negara Republik Indonesia, digagas oleh Ir. Soekarno dan diresmikan pada 18 Agustus 1945.</p>
+      <ul class="pancasila-list">
+        <li><div class="num">1</div><div class="txt"><strong>Ketuhanan Yang Maha Esa</strong>Percaya dan bertakwa kepada Tuhan sesuai agama masing-masing. Indonesia mengakui 6 agama resmi.</div></li>
+        <li><div class="num">2</div><div class="txt"><strong>Kemanusiaan yang Adil dan Beradab</strong>Mengakui persamaan derajat, hak, dan kewajiban setiap manusia tanpa diskriminasi.</div></li>
+        <li><div class="num">3</div><div class="txt"><strong>Persatuan Indonesia</strong>Mengutamakan kepentingan bangsa dan negara di atas kepentingan pribadi dan kelompok.</div></li>
+        <li><div class="num">4</div><div class="txt"><strong>Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan</strong>Mengutamakan musyawarah untuk mufakat dalam pengambilan keputusan bersama.</div></li>
+        <li><div class="num">5</div><div class="txt"><strong>Keadilan Sosial bagi Seluruh Rakyat Indonesia</strong>Mewujudkan keadilan dan kemakmuran yang merata bagi seluruh rakyat Indonesia.</div></li>
+      </ul>
+    </div>
+
+    <!-- Tokoh-tokoh -->
+    <div class="geo-card">
+      <h3>⭐ Tokoh-Tokoh Penting Indonesia</h3>
+      <div class="tokoh-grid">
+        <div class="tokoh-card"><div class="ava">👨</div><h4>Ir. Soekarno</h4><p>Presiden pertama RI & Proklamator Kemerdekaan Indonesia (1945–1967)</p></div>
+        <div class="tokoh-card"><div class="ava">👨</div><h4>Drs. Mohammad Hatta</h4><p>Wakil Presiden pertama RI & Proklamator Kemerdekaan Indonesia</p></div>
+        <div class="tokoh-card"><div class="ava">👩</div><h4>Raden Ajeng Kartini</h4><p>Pahlawan nasional, pelopor emansipasi wanita Indonesia (1879–1904)</p></div>
+        <div class="tokoh-card"><div class="ava">👨</div><h4>Pangeran Diponegoro</h4><p>Pahlawan nasional yang memimpin Perang Diponegoro melawan Belanda (1825–1830)</p></div>
+        <div class="tokoh-card"><div class="ava">👨</div><h4>Jenderal Soedirman</h4><p>Panglima Besar TNI pertama, pemimpin gerilya melawan penjajah</p></div>
+        <div class="tokoh-card"><div class="ava">👩</div><h4>Cut Nyak Dien</h4><p>Pahlawan wanita dari Aceh yang gigih melawan penjajah Belanda</p></div>
+        <div class="tokoh-card"><div class="ava">👨</div><h4>Ki Hajar Dewantara</h4><p>Bapak Pendidikan Nasional, pendiri Taman Siswa. Lahir 2 Mei = Hari Pendidikan Nasional</p></div>
+        <div class="tokoh-card"><div class="ava">👨</div><h4>Wage Rudolf Supratman</h4><p>Pencipta lagu kebangsaan Indonesia Raya yang pertama kali dikumandangkan tahun 1928</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CULTURE ===== -->
+<section id="culture">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>🎭 Budaya Indonesia</h2>
+      <p>Kekayaan budaya dari 300+ suku bangsa yang tersebar di seluruh Nusantara</p>
+      <div class="divider"></div>
+    </div>
+    <div class="culture-tabs">
+      <button class="ctab active" onclick="showCulture('tari',this)">💃 Tari Tradisional</button>
+      <button class="ctab" onclick="showCulture('musik',this)">🎵 Alat Musik</button>
+      <button class="ctab" onclick="showCulture('rumah',this)">🏠 Rumah Adat</button>
+      <button class="ctab" onclick="showCulture('pakaian',this)">👘 Pakaian Adat</button>
+      <button class="ctab" onclick="showCulture('upacara',this)">🎊 Upacara Adat</button>
+    </div>
+
+    <div id="cult-tari" class="cult-section active">
+      <div class="culture-items">
+        <div class="culture-item"><div class="ci-icon">💃</div><h4>Tari Saman</h4><div class="origin">📍 Aceh</div><p>Tari kelompok dengan gerakan tangan sangat cepat dan serempak. Diakui UNESCO sebagai Warisan Budaya Tak Benda sejak 2011.</p></div>
+        <div class="culture-item"><div class="ci-icon">🌸</div><h4>Tari Pendet</h4><div class="origin">📍 Bali</div><p>Tari sambutan yang awalnya merupakan tari pemujaan di pura. Ditarikan wanita dengan membawa bokor berisi bunga.</p></div>
+        <div class="culture-item"><div class="ci-icon">🔥</div><h4>Tari Kecak</h4><div class="origin">📍 Bali</div><p>Tari yang menceritakan kisah Ramayana dengan iringan suara "cak cak cak" oleh banyak penari pria. Sangat spektakuler!</p></div>
+        <div class="culture-item"><div class="ci-icon">🦚</div><h4>Tari Merak</h4><div class="origin">📍 Jawa Barat</div><p>Tari yang menirukan gerak-gerik burung merak, dengan kostum berwarna-warni menyerupai bulu merak yang indah.</p></div>
+        <div class="culture-item"><div class="ci-icon">⚔️</div><h4>Tari Piring</h4><div class="origin">📍 Sumatera Barat</div><p>Tari dengan menggunakan piring sebagai properti, digerakkan dengan lincah tanpa jatuh. Dari suku Minangkabau.</p></div>
+        <div class="culture-item"><div class="ci-icon">🌊</div><h4>Tari Tor-Tor</h4><div class="origin">📍 Sumatera Utara</div><p>Tari sakral dari suku Batak yang biasanya ditampilkan dalam upacara adat dan ritual keagamaan.</p></div>
+        <div class="culture-item"><div class="ci-icon">🦋</div><h4>Tari Yapong</h4><div class="origin">📍 Betawi/DKI Jakarta</div><p>Tari kreasi Betawi yang energetik dengan gerakan dinamis, sering ditampilkan dalam acara penyambutan tamu kehormatan.</p></div>
+        <div class="culture-item"><div class="ci-icon">🌺</div><h4>Tari Serimpi</h4><div class="origin">📍 Jawa Tengah</div><p>Tari istana dari Keraton Yogyakarta dan Surakarta yang anggun dan penuh simbol. Ditarikan oleh 4 wanita.</p></div>
+      </div>
+    </div>
+
+    <div id="cult-musik" class="cult-section">
+      <div class="culture-items">
+        <div class="culture-item"><div class="ci-icon">🪘</div><h4>Gamelan</h4><div class="origin">📍 Jawa & Bali</div><p>Ansambel musik perkusi dari logam. Terdiri dari kendang, gong, saron, bonang, dll. Diakui UNESCO tahun 2021.</p></div>
+        <div class="culture-item"><div class="ci-icon">🎋</div><h4>Angklung</h4><div class="origin">📍 Jawa Barat</div><p>Alat musik dari bambu yang dimainkan dengan cara digoyangkan. Diakui UNESCO tahun 2010 sebagai warisan budaya.</p></div>
+        <div class="culture-item"><div class="ci-icon">🥁</div><h4>Tifa</h4><div class="origin">📍 Maluku & Papua</div><p>Alat musik pukul berupa drum tradisional yang digunakan dalam upacara adat dan hiburan.</p></div>
+        <div class="culture-item"><div class="ci-icon">🎵</div><h4>Kolintang</h4><div class="origin">📍 Sulawesi Utara</div><p>Alat musik bilah kayu mirip xilofon dari Minahasa. Dimainkan dengan cara dipukul menggunakan stik kayu.</p></div>
+        <div class="culture-item"><div class="ci-icon">🎸</div><h4>Sasando</h4><div class="origin">📍 Nusa Tenggara Timur</div><p>Alat musik petik unik berbentuk kerucut dari daun lontar. Berasal dari Pulau Rote, NTT.</p></div>
+        <div class="culture-item"><div class="ci-icon">🎺</div><h4>Seruling/Suling</h4><div class="origin">📍 Seluruh Indonesia</div><p>Alat musik tiup dari bambu yang dikenal di hampir seluruh wilayah Indonesia. Menghasilkan suara yang merdu.</p></div>
+        <div class="culture-item"><div class="ci-icon">🪗</div><h4>Accordion Betawi</h4><div class="origin">📍 DKI Jakarta</div><p>Digunakan dalam musik Gambang Kromong khas Betawi yang memadukan unsur Tionghoa dan Melayu.</p></div>
+        <div class="culture-item"><div class="ci-icon">🎶</div><h4>Gondang Batak</h4><div class="origin">📍 Sumatera Utara</div><p>Ansambel musik sakral suku Batak Toba, digunakan dalam upacara adat dan ritual keagamaan Batak.</p></div>
+      </div>
+    </div>
+
+    <div id="cult-rumah" class="cult-section">
+      <div class="culture-items">
+        <div class="culture-item"><div class="ci-icon">🏠</div><h4>Rumah Gadang</h4><div class="origin">📍 Sumatera Barat</div><p>Rumah adat Minangkabau dengan atap melengkung seperti tanduk kerbau. Tempat tinggal keluarga besar matrilineal.</p></div>
+        <div class="culture-item"><div class="ci-icon">🏯</div><h4>Tongkonan</h4><div class="origin">📍 Sulawesi Selatan</div><p>Rumah adat Toraja dengan atap melengkung ke atas di kedua ujungnya, dihiasi ukiran berwarna cerah.</p></div>
+        <div class="culture-item"><div class="ci-icon">🛖</div><h4>Honai</h4><div class="origin">📍 Papua</div><p>Rumah tradisional suku Dani berbentuk bulat dengan atap kerucut dari jerami. Dibuat tanpa jendela untuk menghangatkan.</p></div>
+        <div class="culture-item"><div class="ci-icon">🏠</div><h4>Joglo</h4><div class="origin">📍 Jawa Tengah & Yogyakarta</div><p>Rumah adat Jawa dengan atap berbentuk piramida bertingkat (tajug). Mencerminkan status sosial pemiliknya.</p></div>
+        <div class="culture-item"><div class="ci-icon">🏡</div><h4>Rumah Lontik</h4><div class="origin">📍 Riau</div><p>Rumah adat Melayu Riau dengan atap yang melengkung ke atas di bagian tepinya, didekorasi ukiran halus.</p></div>
+        <div class="culture-item"><div class="ci-icon">🏘️</div><h4>Rumah Panjang</h4><div class="origin">📍 Kalimantan</div><p>Rumah adat Dayak yang sangat panjang, bisa dihuni oleh puluhan hingga ratusan keluarga sekaligus.</p></div>
+        <div class="culture-item"><div class="ci-icon">🏠</div><h4>Bale Sakenam</h4><div class="origin">📍 Nusa Tenggara Barat</div><p>Rumah adat Sasak dari Lombok dengan atap ilalang dan lantai dari tanah liat yang dipadatkan.</p></div>
+        <div class="culture-item"><div class="ci-icon">🏡</div><h4>Rumah Bolon</h4><div class="origin">📍 Sumatera Utara</div><p>Rumah adat Batak Toba berbentuk panggung dengan ukiran khas berwarna merah, hitam, dan putih.</p></div>
+      </div>
+    </div>
+
+    <div id="cult-pakaian" class="cult-section">
+      <div class="culture-items">
+        <div class="culture-item"><div class="ci-icon">🧵</div><h4>Batik</h4><div class="origin">📍 Jawa</div><p>Kain bermotif indah dibuat dengan teknik perintang wax. UNESCO mengakui sebagai Warisan Budaya Tak Benda tahun 2009.</p></div>
+        <div class="culture-item"><div class="ci-icon">👘</div><h4>Kebaya</h4><div class="origin">📍 Jawa & Bali</div><p>Blus tradisional wanita dengan bahan tipis dan bordir halus. Dipakai pada upacara formal dan pernikahan.</p></div>
+        <div class="culture-item"><div class="ci-icon">🪡</div><h4>Ulos</h4><div class="origin">📍 Sumatera Utara</div><p>Kain tenun sakral suku Batak yang diberikan sebagai ungkapan kasih sayang dalam setiap upacara adat.</p></div>
+        <div class="culture-item"><div class="ci-icon">🎨</div><h4>Tenun Ikat</h4><div class="origin">📍 NTT & NTB</div><p>Kain tenun dengan teknik ikat benang sebelum dicelup untuk membentuk motif. Setiap motif punya makna filosofis.</p></div>
+        <div class="culture-item"><div class="ci-icon">👒</div><h4>Blangkon</h4><div class="origin">📍 Jawa</div><p>Penutup kepala pria khas Jawa, terbuat dari kain batik yang dilipat dan dibentuk menjadi ikat kepala.</p></div>
+        <div class="culture-item"><div class="ci-icon">💎</div><h4>Songket</h4><div class="origin">📍 Sumatera & Bali</div><p>Kain mewah tenunan tangan dengan benang emas atau perak. Dipakai pada upacara adat dan pernikahan.</p></div>
+        <div class="culture-item"><div class="ci-icon">🌺</div><h4>Baju Bodo</h4><div class="origin">📍 Sulawesi Selatan</div><p>Baju adat wanita Bugis-Makassar berbahan kain tipis transparan berwarna-warni. Salah satu pakaian tertua di dunia.</p></div>
+        <div class="culture-item"><div class="ci-icon">🦜</div><h4>Koteka</h4><div class="origin">📍 Papua</div><p>Pakaian tradisional pria Papua terbuat dari labu kering. Merupakan simbol identitas budaya masyarakat Papua pegunungan.</p></div>
+      </div>
+    </div>
+
+    <div id="cult-upacara" class="cult-section">
+      <div class="culture-items">
+        <div class="culture-item"><div class="ci-icon">🎊</div><h4>Ngaben</h4><div class="origin">📍 Bali</div><p>Upacara kremasi Hindu Bali yang meriah. Jenazah dimasukkan ke dalam lembu atau menara hias lalu dibakar.</p></div>
+        <div class="culture-item"><div class="ci-icon">⚰️</div><h4>Rambu Solo</h4><div class="origin">📍 Sulawesi Selatan</div><p>Pesta pemakaman mewah suku Toraja yang bisa berlangsung berhari-hari dengan menyembelih banyak kerbau.</p></div>
+        <div class="culture-item"><div class="ci-icon">🌾</div><h4>Tabuik</h4><div class="origin">📍 Sumatera Barat</div><p>Upacara memperingati wafatnya cucu Nabi Muhammad oleh masyarakat Pariaman. Ditandai dengan arak-arakan besar.</p></div>
+        <div class="culture-item"><div class="ci-icon">🙏</div><h4>Seren Taun</h4><div class="origin">📍 Jawa Barat</div><p>Upacara adat Sunda sebagai wujud syukur atas hasil panen. Diiringi musik angklung dan tari tradisional.</p></div>
+        <div class="culture-item"><div class="ci-icon">🎭</div><h4>Sekaten</h4><div class="origin">📍 Yogyakarta & Solo</div><p>Perayaan Maulid Nabi di Keraton Yogyakarta dan Surakarta dengan gamelan sekati yang ditabuh selama seminggu.</p></div>
+        <div class="culture-item"><div class="ci-icon">🌊</div><h4>Larung Sesaji</h4><div class="origin">📍 Jawa</div><p>Upacara melarung sesaji ke laut sebagai ungkapan syukur nelayan dan permohonan keselamatan berlayar.</p></div>
+        <div class="culture-item"><div class="ci-icon">🏹</div><h4>Pasola</h4><div class="origin">📍 Nusa Tenggara Timur</div><p>Ritual perang-perangan berkuda di Sumba. Para penunggang melempar lembing ke lawan sebagai ritual pertanian.</p></div>
+        <div class="culture-item"><div class="ci-icon">🎆</div><h4>Lompat Batu</h4><div class="origin">📍 Sumatera Utara</div><p>Tradisi melompati tumpukan batu setinggi 2 meter oleh pemuda Nias sebagai ujian kedewasaan dan keberanian.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOD ===== -->
+<section id="food">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>🍜 Kuliner Indonesia</h2>
+      <p>Cita rasa Nusantara dari Sabang sampai Merauke — kaya rempah dan penuh cerita</p>
+      <div class="divider"></div>
+    </div>
+    <div class="food-filter">
+      <button class="ffbtn active" onclick="filterFood('semua',this)">🍽️ Semua</button>
+      <button class="ffbtn" onclick="filterFood('jawa',this)">🏝️ Jawa</button>
+      <button class="ffbtn" onclick="filterFood('sumatra',this)">🌋 Sumatra</button>
+      <button class="ffbtn" onclick="filterFood('kalimantan',this)">🌿 Kalimantan</button>
+      <button class="ffbtn" onclick="filterFood('sulawesi',this)">🦅 Sulawesi</button>
+      <button class="ffbtn" onclick="filterFood('timur',this)">🌺 Indonesia Timur</button>
+    </div>
+    <div class="food-grid" id="foodGrid">
+      <!-- JAWA -->
+      <div class="food-card" data-region="jawa"><div class="food-img" style="background:linear-gradient(135deg,#FFECD2,#FCB69F);">🍛</div><div class="food-body"><h4>Nasi Goreng</h4><div class="food-origin">📍 Jawa / Nasional</div><p>Nasi yang digoreng dengan kecap manis, bawang, telur, dan rempah. Makanan nasional Indonesia yang terkenal di seluruh dunia!</p></div></div>
+      <div class="food-card" data-region="jawa"><div class="food-img" style="background:linear-gradient(135deg,#D4F1C0,#A8E063);">🥜</div><div class="food-body"><h4>Gado-gado</h4><div class="food-origin">📍 Jakarta / Jawa</div><p>Salad sayuran rebus dengan bumbu kacang yang gurih. Terdiri dari lontong, tahu, tempe, dan telur rebus.</p></div></div>
+      <div class="food-card" data-region="jawa"><div class="food-img" style="background:linear-gradient(135deg,#FFE29A,#F7971E);">🍢</div><div class="food-body"><h4>Sate Ayam</h4><div class="food-origin">📍 Madura / Jawa</div><p>Daging ayam yang ditusuk bambu lalu dibakar, disajikan dengan bumbu kacang manis dan lontong.</p></div></div>
+      <div class="food-card" data-region="jawa"><div class="food-img" style="background:linear-gradient(135deg,#FFF3CD,#F6D365);">🍲</div><div class="food-body"><h4>Soto Ayam</h4><div class="food-origin">📍 Jawa</div><p>Sup ayam kuning dengan kunyit, soun, telur, dan perkedel. Dimakan dengan nasi atau lontong.</p></div></div>
+      <div class="food-card" data-region="jawa"><div class="food-img" style="background:linear-gradient(135deg,#FFD3B6,#FFAAA5);">🥘</div><div class="food-body"><h4>Rawon</h4><div class="food-origin">📍 Jawa Timur</div><p>Sup daging sapi berwarna hitam pekat dari keluak. Rasanya kaya dan unik, khas dari Surabaya.</p></div></div>
+      <div class="food-card" data-region="jawa"><div class="food-img" style="background:linear-gradient(135deg,#E0F7FA,#B2EBF2);">🍜</div><div class="food-body"><h4>Bakso</h4><div class="food-origin">📍 Jawa</div><p>Sup bola daging sapi kenyal dengan mie, tahu, dan kuah kaldu gurih. Jajanan paling populer di Indonesia!</p></div></div>
+      <div class="food-card" data-region="jawa"><div class="food-img" style="background:linear-gradient(135deg,#F3E7E9,#E3EEFF);">🥨</div><div class="food-body"><h4>Tempe Mendoan</h4><div class="food-origin">📍 Banyumas, Jawa Tengah</div><p>Tempe tipis yang digoreng setengah matang dengan tepung berbumbu. Kriuk di luar, lembut di dalam!</p></div></div>
+      <div class="food-card" data-region="jawa"><div class="food-img" style="background:linear-gradient(135deg,#FFF1C1,#FFDE83);">🍡</div><div class="food-body"><h4>Gudeg</h4><div class="food-origin">📍 Yogyakarta</div><p>Masakan dari nangka muda yang dimasak dengan santan berjam-jam hingga berwarna cokelat manis. Ikon kuliner Yogyakarta.</p></div></div>
+      <!-- SUMATRA -->
+      <div class="food-card" data-region="sumatra"><div class="food-img" style="background:linear-gradient(135deg,#8B3A3A,#C0392B);">🥩</div><div class="food-body"><h4>Rendang</h4><div class="food-origin">📍 Sumatera Barat</div><p>Daging sapi yang dimasak lama dalam santan dan bumbu rempah hingga kering. Terpilih sebagai makanan terlezat di dunia!</p></div></div>
+      <div class="food-card" data-region="sumatra"><div class="food-img" style="background:linear-gradient(135deg,#F9F871,#F6D365);">🐟</div><div class="food-body"><h4>Pempek</h4><div class="food-origin">📍 Palembang, Sumatra Selatan</div><p>Olahan ikan yang dicampur tepung sagu, disajikan dengan kuah cuka pedas. Kuliner ikonik kota Palembang.</p></div></div>
+      <div class="food-card" data-region="sumatra"><div class="food-img" style="background:linear-gradient(135deg,#FFD3A5,#FD9853);">🍜</div><div class="food-body"><h4>Mie Aceh</h4><div class="food-origin">📍 Aceh</div><p>Mie tebal berkuah kari pedas dengan daging sapi atau udang. Kaya rempah khas Aceh yang menggugah selera.</p></div></div>
+      <div class="food-card" data-region="sumatra"><div class="food-img" style="background:linear-gradient(135deg,#D7F8FC,#74EBD5);">🥗</div><div class="food-body"><h4>Arsik</h4><div class="food-origin">📍 Sumatera Utara (Batak)</div><p>Ikan mas bumbu kuning khas Batak dengan andaliman (merica Batak). Hidangan istimewa upacara adat.</p></div></div>
+      <!-- KALIMANTAN -->
+      <div class="food-card" data-region="kalimantan"><div class="food-img" style="background:linear-gradient(135deg,#C6F6D5,#9AE6B4);">🍚</div><div class="food-body"><h4>Nasi Kuning Banjar</h4><div class="food-origin">📍 Kalimantan Selatan</div><p>Nasi kuning khas Banjar yang disajikan dengan aneka lauk pauk seperti ayam, telur, dan ikan asin.</p></div></div>
+      <div class="food-card" data-region="kalimantan"><div class="food-img" style="background:linear-gradient(135deg,#FEB2B2,#FC8181);">🐟</div><div class="food-body"><h4>Juhu Umbut Rotan</h4><div class="food-origin">📍 Kalimantan Tengah (Dayak)</div><p>Sayur dari umbut rotan muda khas suku Dayak. Rasa sedikit pahit namun unik dan bergizi tinggi.</p></div></div>
+      <!-- SULAWESI -->
+      <div class="food-card" data-region="sulawesi"><div class="food-img" style="background:linear-gradient(135deg,#FFA69E,#FAF3DD);">🐟</div><div class="food-body"><h4>Coto Makassar</h4><div class="food-origin">📍 Makassar, Sulawesi Selatan</div><p>Sup jeroan sapi berkuah gelap dengan bumbu kacang dan rempah khas. Disajikan dengan ketupat.</p></div></div>
+      <div class="food-card" data-region="sulawesi"><div class="food-img" style="background:linear-gradient(135deg,#96E6A1,#D4FC79);">🌶️</div><div class="food-body"><h4>Tinutuan (Bubur Manado)</h4><div class="food-origin">📍 Manado, Sulawesi Utara</div><p>Bubur sayur khas Manado yang sehat dan berwarna-warni. Berisi labu, singkong, jagung, dan aneka sayuran.</p></div></div>
+      <!-- INDONESIA TIMUR -->
+      <div class="food-card" data-region="timur"><div class="food-img" style="background:linear-gradient(135deg,#D4E157,#CDDC39);">🐟</div><div class="food-body"><h4>Papeda</h4><div class="food-origin">📍 Maluku & Papua</div><p>Makanan pokok dari sagu berbentuk bubur lem transparan. Dimakan bersama ikan kuah kuning yang asam segar.</p></div></div>
+      <div class="food-card" data-region="timur"><div class="food-img" style="background:linear-gradient(135deg,#FCCB90,#D57EEB);">🍖</div><div class="food-body"><h4>Se'i Sapi</h4><div class="food-origin">📍 Nusa Tenggara Timur</div><p>Daging sapi asap khas Kupang yang diasapi dengan kayu kosambi. Tekstur empuk dengan aroma smoky yang khas.</p></div></div>
+      <div class="food-card" data-region="timur"><div class="food-img" style="background:linear-gradient(135deg,#A1C4FD,#C2E9FB);">🐠</div><div class="food-body"><h4>Ikan Bakar Rica-Rica</h4><div class="food-origin">📍 Sulawesi & Maluku</div><p>Ikan bakar dengan bumbu rica-rica yang pedas dan segar. Khas masakan Manado dan Maluku yang menggoda.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ANIMALS ===== -->
+<section id="animals">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>🦅 Fauna Khas Indonesia</h2>
+      <p>Hewan-hewan endemik dan langka yang menjadi kebanggaan Nusantara</p>
+      <div class="divider"></div>
+    </div>
+    <div class="animals-grid">
+
+      <div class="animal-card">
+        <div class="animal-img-wrap" style="background:linear-gradient(135deg,#7B5E3A,#4A2C0A);">
+          <div class="emoji-ph">🦎</div>
+          <div class="animal-status status-kritis">⚠️ Kritis</div>
+        </div>
+        <div class="animal-body">
+          <h4>Komodo</h4>
+          <div class="animal-latin">Varanus komodoensis</div>
+          <div class="animal-origin">📍 Pulau Komodo, NTT</div>
+          <p>Kadal terbesar di dunia yang hanya hidup di Pulau Komodo dan sekitarnya. Dapat tumbuh hingga 3 meter dan memiliki racun dalam air liurnya. Predator puncak di habitatnya!</p>
+          <button class="sound-btn" onclick="playSound(this,'komodo')">🔊 Dengar Suara Komodo</button>
+        </div>
+      </div>
+
+      <div class="animal-card">
+        <div class="animal-img-wrap" style="background:linear-gradient(135deg,#8B6914,#5D4037);">
+          <div class="emoji-ph">🦧</div>
+          <div class="animal-status status-kritis">⚠️ Kritis</div>
+        </div>
+        <div class="animal-body">
+          <h4>Orangutan Sumatera</h4>
+          <div class="animal-latin">Pongo abelii</div>
+          <div class="animal-origin">📍 Hutan Sumatra & Kalimantan</div>
+          <p>Primata terbesar di Asia yang sangat cerdas. Namanya dari Melayu: "orang utan" = manusia hutan. Berbagi 97% DNA dengan manusia. Hidupnya terancam karena deforestasi.</p>
+          <button class="sound-btn" onclick="playSound(this,'orangutan')">🔊 Dengar Suara Orangutan</button>
+        </div>
+      </div>
+
+      <div class="animal-card">
+        <div class="animal-img-wrap" style="background:linear-gradient(135deg,#FF8C00,#FF4500);">
+          <div class="emoji-ph">🐯</div>
+          <div class="animal-status status-kritis">⚠️ Kritis</div>
+        </div>
+        <div class="animal-body">
+          <h4>Harimau Sumatera</h4>
+          <div class="animal-latin">Panthera tigris sumatrae</div>
+          <div class="animal-origin">📍 Hutan Sumatra</div>
+          <p>Subspesies harimau terkecil di dunia dan satu-satunya harimau yang tersisa di Indonesia. Populasinya kurang dari 400 ekor di alam liar. Predator terkuat di Sumatra!</p>
+          <button class="sound-btn" onclick="playSound(this,'harimau')">🔊 Dengar Raungan Harimau</button>
+        </div>
+      </div>
+
+      <div class="animal-card">
+        <div class="animal-img-wrap" style="background:linear-gradient(135deg,#2C3E50,#4CA1AF);">
+          <div class="emoji-ph">🐘</div>
+          <div class="animal-status status-kritis">⚠️ Kritis</div>
+        </div>
+        <div class="animal-body">
+          <h4>Gajah Sumatera</h4>
+          <div class="animal-latin">Elephas maximus sumatranus</div>
+          <div class="animal-origin">📍 Hutan Sumatra</div>
+          <p>Subspesies gajah Asia yang lebih kecil dari gajah Afrika. Berperan penting menjaga ekosistem hutan sebagai "arsitek hutan". Populasinya terus menurun drastis.</p>
+          <button class="sound-btn" onclick="playSound(this,'gajah')">🔊 Dengar Suara Gajah</button>
+        </div>
+      </div>
+
+      <div class="animal-card">
+        <div class="animal-img-wrap" style="background:linear-gradient(135deg,#1A237E,#283593);">
+          <div class="emoji-ph">🦅</div>
+          <div class="animal-status status-rentan">⚠️ Rentan</div>
+        </div>
+        <div class="animal-body">
+          <h4>Elang Jawa</h4>
+          <div class="animal-latin">Nisaetus bartelsi</div>
+          <div class="animal-origin">📍 Hutan Pulau Jawa</div>
+          <p>Elang endemik Pulau Jawa yang dipercaya menjadi inspirasi lambang negara Garuda Pancasila. Rajawali yang gagah dengan jambul tegak di kepalanya. Populasi hanya sekitar 600 ekor.</p>
+          <button class="sound-btn" onclick="playSound(this,'elang')">🔊 Dengar Suara Elang Jawa</button>
+        </div>
+      </div>
+
+      <div class="animal-card">
+        <div class="animal-img-wrap" style="background:linear-gradient(135deg,#1B5E20,#2E7D32);">
+          <div class="emoji-ph">🐊</div>
+          <div class="animal-status status-rentan">⚠️ Rentan</div>
+        </div>
+        <div class="animal-body">
+          <h4>Buaya Muara</h4>
+          <div class="animal-latin">Crocodylus porosus</div>
+          <div class="animal-origin">📍 Seluruh Indonesia (pesisir)</div>
+          <p>Reptil terbesar dan paling berbahaya di dunia. Bisa mencapai panjang 7 meter. Predator puncak di ekosistem mangrove dan muara sungai. Dikenal sangat agresif dan kuat.</p>
+          <button class="sound-btn" onclick="playSound(this,'buaya')">🔊 Dengar Suara Buaya</button>
+        </div>
+      </div>
+
+      <div class="animal-card">
+        <div class="animal-img-wrap" style="background:linear-gradient(135deg,#F3E5F5,#CE93D8);">
+          <div class="emoji-ph">🦜</div>
+          <div class="animal-status status-kritis">⚠️ Kritis</div>
+        </div>
+        <div class="animal-body">
+          <h4>Kakatua Raja</h4>
+          <div class="animal-latin">Probosciger aterrimus</div>
+          <div class="animal-origin">📍 Papua & Maluku</div>
+          <p>Kakatua hitam terbesar di dunia dengan jambul indah berwarna merah di pipi. Burung yang sangat cerdas dan bisa meniru suara manusia. Salah satu burung paling eksotis di Papua.</p>
+          <button class="sound-btn" onclick="playSound(this,'kakatua')">🔊 Dengar Suara Kakatua</button>
+        </div>
+      </div>
+
+      <div class="animal-card">
+        <div class="animal-img-wrap" style="background:linear-gradient(135deg,#E8F5E9,#A5D6A7);">
+          <div class="emoji-ph">🦏</div>
+          <div class="animal-status status-kritis">⚠️ Kritis</div>
+        </div>
+        <div class="animal-body">
+          <h4>Badak Jawa</h4>
+          <div class="animal-latin">Rhinoceros sondaicus</div>
+          <div class="animal-origin">📍 Taman Nasional Ujung Kulon, Banten</div>
+          <p>Salah satu mamalia paling langka di dunia dengan populasi hanya sekitar 70 ekor! Hanya ditemukan di Taman Nasional Ujung Kulon. Memiliki satu cula dan tubuh berlapis kulit tebal seperti baju zirah.</p>
+          <button class="sound-btn" onclick="playSound(this,'badak')">🔊 Dengar Suara Badak</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== GAME ===== -->
+<section id="game">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>🎮 Kuis: Uji Pengetahuanmu!</h2>
+      <p>Jawab 10 pertanyaan tentang Indonesia dan lihat seberapa besar kamu mengenalnya!</p>
+      <div class="divider"></div>
+    </div>
+    <div class="game-container">
+      <!-- START -->
+      <div class="game-start" id="gameStart">
+        <div class="big-emoji">🇮🇩</div>
+        <h3>Siap Bermain Kuis?</h3>
+        <p>Terdapat <strong>10 pertanyaan</strong> tentang Indonesia meliputi sejarah, budaya, alam, dan kuliner. Baca soal dengan teliti dan pilih jawaban yang benar!</p>
+        <button class="btn-start-game" onclick="startGame()">Mulai Kuis Sekarang! →</button>
+      </div>
+      <!-- PLAY -->
+      <div class="game-play" id="gamePlay">
+        <div class="game-header">
+          <div class="game-info">
+            <div class="game-stat"><div class="gs-lbl">Skor</div><div class="gs-val" id="gScore">0</div></div>
+            <div class="game-stat"><div class="gs-lbl">Benar</div><div class="gs-val" id="gBenar">0</div></div>
+            <div class="game-stat"><div class="gs-lbl">Salah</div><div class="gs-val" id="gSalah">0</div></div>
+          </div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-track"><div class="progress-fill" id="gProgress" style="width:0%"></div></div>
+          <div class="progress-lbl" id="gProgLbl">Soal 1 dari 10</div>
+        </div>
+        <div class="q-card">
+          <div class="q-num" id="qNum">SOAL 1 / 10</div>
+          <div class="q-text" id="qText"></div>
+          <div class="q-options" id="qOpts"></div>
+          <div class="q-feedback" id="qFeedback"></div>
+          <button class="btn-next" id="btnNext" onclick="nextQ()">Soal Berikutnya →</button>
+        </div>
+      </div>
+      <!-- RESULT -->
+      <div class="game-result" id="gameResult">
+        <div class="result-trophy" id="rTrophy"></div>
+        <div class="result-title" id="rTitle"></div>
+        <div style="font-size:15px;color:var(--muted);margin-bottom:6px;">Skor akhirmu:</div>
+        <div class="result-score" id="rScore"></div>
+        <div class="result-msg" id="rMsg"></div>
+        <div class="answer-summary" id="rSummary"></div>
+        <div class="result-btns">
+          <button class="btn-retry" onclick="restartGame()">🔄 Main Lagi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#1A1A2E;color:rgba(255,255,255,0.6);text-align:center;padding:32px 20px;">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:12px;">
+    <div style="width:60px;height:15px;background:#CE1126;border-radius:3px 3px 0 0;"></div>
+    <div style="width:60px;height:15px;background:#FFFFFF;border-radius:0 0 3px 3px;"></div>
+</div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:12px;">
+    <div style="width:60px;height:15px;background:#CE1126;border-radius:3px 3px 0 0;"></div>
+    <div style="width:60px;height:15px;background:#FFFFFF;border-radius:0 0 3px 3px;"></div>
+</div>
+  <p style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;">BY ALFIYAH NURUL HIDAYATI</p>
+  <p style="font-size:13px;">Bhinneka Tunggal Ika — Berbeda-beda Tetapi Tetap Satu Jua</p>
+  <p style="font-size:12px;margin-top:8px;">Website Sumber Belajar Interaktif | Dibuat dengan ❤️ untuk mengenal Indonesia</p>
+</footer>
+
+<script>
+// ===== NAVBAR ACTIVE =====
+function setActive(el){
+  document.querySelectorAll('.nav-a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+}
+// Intersection Observer untuk update nav aktif saat scroll
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 80) cur = s.id;
+  });
+  navLinks.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+cur) a.classList.add('active');
+  });
+});
+
+// ===== CULTURE TABS =====
+function showCulture(id, el){
+  document.querySelectorAll('.cult-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('cult-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ===== FOOD FILTER =====
+function filterFood(region, el){
+  document.querySelectorAll('.ffbtn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.food-card').forEach(c=>{
+    if(region==='semua'||c.dataset.region===region){
+      c.style.display='block';
+    } else {
+      c.style.display='none';
+    }
+  });
+}
+
+// ===== ANIMAL SOUNDS =====
+const soundFreqs = {
+  komodo:  [[200,0.3],[150,0.5],[180,0.4],[120,0.6]],
+  orangutan: [[300,0.2],[500,0.3],[700,0.4],[600,0.3],[400,0.2]],
+  harimau: [[80,0.5],[60,0.8],[50,1.0],[70,0.6],[90,0.3]],
+  gajah:   [[120,0.3],[100,0.5],[80,0.8],[90,0.6],[110,0.4]],
+  elang:   [[800,0.2],[1200,0.3],[900,0.2],[1000,0.3]],
+  buaya:   [[60,0.4],[50,0.6],[40,0.8],[55,0.5]],
+  kakatua: [[600,0.2],[900,0.3],[1100,0.4],[800,0.3]],
+  badak:   [[100,0.3],[80,0.5],[70,0.6],[85,0.4]],
+};
+let audioCtx = null;
+function playSound(btn, animal){
+  if(btn.classList.contains('playing')){return;}
+  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+  btn.classList.add('playing');
+  btn.textContent = '🔊 Memutar...';
+  const freqs = soundFreqs[animal];
+  let time = audioCtx.currentTime;
+  freqs.forEach(([freq, dur])=>{
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.frequency.value = freq;
+    osc.type = animal==='elang'||animal==='kakatua' ? 'sine' : 'sawtooth';
+    gain.gain.setValueAtTime(0.3, time);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + dur);
+    osc.start(time);
+    osc.stop(time + dur);
+    time += dur * 0.8;
+  });
+  const totalDur = freqs.reduce((s,[,d])=>s+d*0.8,0)*1000+300;
+  setTimeout(()=>{
+    btn.classList.remove('playing');
+    btn.textContent = '🔊 Dengar Suara ' + btn.textContent.split('Dengar Suara ')[1] || '🔊 Dengar Suara';
+    // restore label
+    const labels = {komodo:'Komodo',orangutan:'Orangutan',harimau:'Raungan Harimau',gajah:'Gajah',elang:'Elang Jawa',buaya:'Buaya',kakatua:'Kakatua',badak:'Badak'};
+    btn.textContent = '🔊 Dengar Suara ' + labels[animal];
+  }, totalDur);
+}
+
+// ===== QUIZ GAME =====
+const soalBank = [
+  {q:'Apa ibu kota negara Indonesia?',opts:['Surabaya','Bandung','Jakarta','Yogyakarta'],ans:2,info:'Jakarta terletak di Pulau Jawa dan menjadi ibu kota Indonesia sejak kemerdekaan tahun 1945.'},
+  {q:'Kapan Indonesia memproklamasikan kemerdekaannya?',opts:['17 Agustus 1945','17 Agustus 1950','20 Mei 1945','28 Oktober 1928'],ans:0,info:'Indonesia merdeka pada 17 Agustus 1945, diproklamasikan oleh Ir. Soekarno dan Drs. Mohammad Hatta.'},
+  {q:'Apa semboyan negara Indonesia?',opts:['Merdeka atau Mati','Bhinneka Tunggal Ika','Pancasila Sakti','Garuda Nusantara'],ans:1,info:'"Bhinneka Tunggal Ika" artinya "Berbeda-beda Tetapi Tetap Satu Jua". Diambil dari Kakawin Sutasoma abad ke-14.'},
+  {q:'Berapa jumlah sila dalam Pancasila?',opts:['3 sila','4 sila','5 sila','6 sila'],ans:2,info:'Pancasila terdiri dari 5 sila yang menjadi dasar dan ideologi negara Republik Indonesia.'},
+  {q:'Hewan apa yang hanya hidup di Pulau Komodo, Indonesia?',opts:['Biawak Raksasa','Buaya Komodo','Komodo','Iguana Raksasa'],ans:2,info:'Komodo (Varanus komodoensis) adalah kadal terbesar di dunia, panjangnya bisa mencapai 3 meter! Hanya ada di Indonesia.'},
+  {q:'Makanan nasional Indonesia yang terkenal di seluruh dunia adalah?',opts:['Rendang','Sate','Nasi Goreng','Gado-gado'],ans:2,info:'Nasi Goreng adalah makanan nasional Indonesia yang paling dikenal dunia. Dibuat dari nasi yang digoreng dengan kecap manis dan rempah.'},
+  {q:'Kain tradisional Indonesia yang diakui UNESCO sejak 2009 adalah?',opts:['Tenun','Songket','Ulos','Batik'],ans:3,info:'Batik Indonesia diakui UNESCO sebagai Warisan Budaya Tak Benda Kemanusiaan pada 2 Oktober 2009. Kini tanggal itu diperingati sebagai Hari Batik Nasional.'},
+  {q:'Siapa Presiden pertama Republik Indonesia?',opts:['Soeharto','Ir. Soekarno','B.J. Habibie','Abdurrahman Wahid'],ans:1,info:'Ir. Soekarno adalah Presiden pertama RI (1945–1967) sekaligus salah satu Proklamator Kemerdekaan Indonesia.'},
+  {q:'Pulau mana yang disebut "Pulau Dewata" karena keindahan budayanya?',opts:['Lombok','Flores','Bali','Sumba'],ans:2,info:'Bali dijuluki "Pulau Dewata" atau "Island of the Gods" karena keindahan pura, seni, dan budaya Hindu-Balinya yang kaya.'},
+  {q:'Apa nama tari tradisional dari Aceh yang gerakannya sangat cepat dan serempak?',opts:['Tari Kecak','Tari Pendet','Tari Saman','Tari Piring'],ans:2,info:'Tari Saman dari Aceh diakui UNESCO tahun 2011. Terkenal dengan gerakan tangan yang sangat cepat dan serempak ditarikan berkelompok.'},
+];
+
+let qIdx=0, gSkor=0, benar=0, salah=0, jawaban=[], soalAcak=[];
+function startGame(){
+  document.getElementById('gameStart').style.display='none';
+  document.getElementById('gamePlay').style.display='block';
+  document.getElementById('gameResult').classList.remove('show');
+  qIdx=0;gSkor=0;benar=0;salah=0;jawaban=[];
+  soalAcak=[...soalBank].sort(()=>Math.random()-0.5);
+  renderSoal();
+}
+function renderSoal(){
+  const s=soalAcak[qIdx];
+  document.getElementById('qNum').textContent=`SOAL ${qIdx+1} / ${soalAcak.length}`;
+  document.getElementById('qText').textContent=s.q;
+  document.getElementById('gProgress').style.width=`${(qIdx/soalAcak.length)*100}%`;
+  document.getElementById('gProgLbl').textContent=`Soal ${qIdx+1} dari ${soalAcak.length}`;
+  document.getElementById('qFeedback').className='q-feedback';
+  document.getElementById('btnNext').className='btn-next';
+  document.getElementById('qOpts').innerHTML=s.opts.map((o,i)=>
+    `<button class="q-opt" onclick="jawab(${i})">${o}</button>`
+  ).join('');
+  updateStats();
+}
+function jawab(i){
+  const s=soalAcak[qIdx];
+  document.querySelectorAll('.q-opt').forEach(o=>o.classList.add('disabled'));
+  document.querySelectorAll('.q-opt')[i].classList.add(i===s.ans?'correct':'wrong');
+  if(i!==s.ans) document.querySelectorAll('.q-opt')[s.ans].classList.add('correct');
+  const benarJawab = i===s.ans;
+  if(benarJawab){benar++;gSkor+=10;}else{salah++;}
+  jawaban.push({soal:s.q, pilihan:s.opts[i], benar:benarJawab, kunci:s.opts[s.ans], info:s.info});
+  const fb=document.getElementById('qFeedback');
+  fb.className='q-feedback show '+(benarJawab?'correct':'wrong');
+  fb.innerHTML=(benarJawab?'✅ Benar! ':'❌ Salah! ')+s.info;
+  document.getElementById('btnNext').className='btn-next show';
+  updateStats();
+}
+function nextQ(){
+  qIdx++;
+  if(qIdx>=soalAcak.length){showResult();return;}
+  renderSoal();
+}
+function updateStats(){
+  document.getElementById('gScore').textContent=gSkor;
+  document.getElementById('gBenar').textContent=benar;
+  document.getElementById('gSalah').textContent=salah;
+}
+function showResult(){
+  document.getElementById('gamePlay').style.display='none';
+  const r=document.getElementById('gameResult');
+  r.classList.add('show');
+  document.getElementById('gProgress').style.width='100%';
+  const pct=gSkor/(soalAcak.length*10);
+  let trophy,title,msg;
+  if(pct===1){trophy='🏆';title='Sempurna! Luar Biasa!';msg='Nilai sempurna! Kamu benar-benar ahli tentang Indonesia. Selamat! 🎉';}
+  else if(pct>=0.8){trophy='🥇';title='Hebat Sekali!';msg='Kamu sangat mengenal Indonesia! Terus pelajari lebih dalam ya.';}
+  else if(pct>=0.6){trophy='🥈';title='Bagus!';msg='Lumayan bagus! Masih ada beberapa yang perlu dipelajari lagi.';}
+  else if(pct>=0.4){trophy='🥉';title='Cukup!';msg='Jangan menyerah! Baca materi di atas lalu coba lagi.';}
+  else{trophy='📚';title='Ayo Belajar Lagi!';msg='Pelajari semua materi tentang Indonesia di atas, lalu coba kuis ini lagi!';}
+  document.getElementById('rTrophy').textContent=trophy;
+  document.getElementById('rTitle').textContent=title;
+  document.getElementById('rScore').textContent=gSkor+' / '+(soalAcak.length*10)+' poin';
+  document.getElementById('rMsg').textContent=msg;
+  document.getElementById('rSummary').innerHTML=
+    '<h4>📋 Ringkasan Jawaban:</h4>'+
+    jawaban.map((j,i)=>
+      `<div class="ans-item">
+        <span class="ans-icon">${j.benar?'✅':'❌'}</span>
+        <div><div class="ans-q">${i+1}. ${j.soal}</div>
+        <div class="ans-a">Jawabanmu: <strong>${j.pilihan}</strong>${!j.benar?' | Benar: <strong>'+j.kunci+'</strong>':''}</div></div>
+      </div>`
+    ).join('');
+}
+function restartGame(){
+  document.getElementById('gameResult').classList.remove('show');
+  document.getElementById('gameStart').style.display='block';
+}
+</script>
+</body>
+</html>
